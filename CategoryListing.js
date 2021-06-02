@@ -46,7 +46,7 @@ function CategoryListingScreen({navigation, route}) {
 	if (cData) {
 		notesPreview = cData.notes.map((nItem) => {
 			return (
-				<TouchableOpacity key={nItem.id} style={[styles.noteItem, styles.shadow]} onPress={() => {navigateToNotes(nItem)}}>
+				<View key={nItem.id} style={[styles.noteItem, styles.shadow]} >
 					{
 						nItem.lastUpdateOn &&
 						<Text style={styles.timeStampText}>{new Date(nItem.lastUpdateOn).toDateString()}</Text>
@@ -55,7 +55,10 @@ function CategoryListingScreen({navigation, route}) {
 						disabled={true}
 						initialContentHTML={nItem.data}
 					/>
-				</TouchableOpacity>
+					<TouchableOpacity onPress={() => {navigateToNotes(nItem)}}>
+						<Text style={[styles.timeStampText,{textAlign: 'right'}]}>View note...</Text>
+					</TouchableOpacity>
+				</View>
 			)
 		});
 
