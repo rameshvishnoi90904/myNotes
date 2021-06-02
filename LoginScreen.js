@@ -21,7 +21,6 @@ const {width, height} = Dimensions.get("window");
 function LoginScreen({navigation, route}) {
 	const [state, update] = useContext(AuthContext);
 
-	console.log("state ", state);
 	const signinAnon = async () => {
 		update({
 			type: "LOGIN"

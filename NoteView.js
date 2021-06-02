@@ -123,7 +123,9 @@ function NoteView({navigation, route}) {
 							<Text style={styles.categoryName}>{category}</Text>
 						</View>
 					</View>
-					<Button onPress={onDismiss} title="Cancel" style={[styles.button, styles.cancelButton]}/>
+					<View style={{marginHorizontal: 10}}>
+						<Button onPress={onDismiss} title="Cancel" color="red" style={[styles.button, styles.cancelButton]}/>
+					</View>
 					<Button onPress={onSave} title="Save" style={[styles.button, styles.proceedButton]}/>
 				</View>
 			</SafeAreaView>
@@ -143,7 +145,8 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		paddingHorizontal: 20,
 		flexDirection: 'row',
-		justifyContent: 'flex-end'
+		justifyContent: 'flex-end',
+		alignItems: 'center'
 	},
 	richBar: {
         borderColor: '#efefef',

@@ -36,7 +36,9 @@ const MainStackScreen = () => {
 			if (value) {
 				update({type: 'INITIALIZE', data: JSON.parse(value)});
 			}
-			setInitialLoading(false)
+			setTimeout(() => {
+				setInitialLoading(false);
+			}, 1500);
 		});
 	},[]);
 
@@ -98,25 +100,30 @@ function ModalScreen({ navigation }) {
 		)
 	});
 	return (
-	  <View style={{ height: 2 * height/3, top: height/6, backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 10, marginHorizontal: 10, borderRadius: 10}}>
-		<Text style={{ fontSize: 30, marginBottom: 10 }}>Add new notes</Text>
-		<Text style={{ fontSize: 16 }}>Select existing Category </Text>
-		<View style={{flex: 1}}>
-			<View style={styles.categorySelector}>
-				{categoryPreview}
+		<View style={{ height: 2 * height/3, top: height/6, backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 10, marginHorizontal: 10, borderRadius: 10}}>
+			<Text style={{ fontSize: 30, marginBottom: 10 }}>Add new notes</Text>
+			<Text style={{ fontSize: 16 }}>Select existing Category </Text>
+			<View style={{flex:1}}>
+				<View style={styles.categorySelector}>
+					{categoryPreview}
+				</View>
+			</View>
+				<View>
+					<Text style={{ fontSize: 16 }}>or create new</Text>
+					<View>
+						<TextInput style={styles.input} value={newCategory} onChangeText={onNewCategoryInput}/>
+					</View>
+				</View>
+
+			
+			<View style={styles.buttonContainer}>
+				<View style={styles.cancelButton}>
+					<Button onPress={() => navigation.goBack()} title="Dismiss" color="red"/>
+				</View>
+				<Button disabled={!(newCategory !== "" || selectedCategory !== "")} onPress={addNote} title="Proceed"/>
 			</View>
 		</View>
-		<View>
-			<Text style={{ fontSize: 16 }}>or create new</Text>
-			<View>
-				<TextInput style={styles.input} value={newCategory} onChangeText={onNewCategoryInput}/>
-			</View>
-		</View>
-		<View style={styles.buttonContainer}>
-			<Button onPress={() => navigation.goBack()} title="Dismiss" style={[styles.button, styles.cancelButton]}/>
-			<Button disabled={!(newCategory !== "" || selectedCategory !== "")} onPress={addNote} title="Proceed" style={[styles.button, styles.proceedButton]}/>
-		</View>
-	  </View>
+
 	);
   }
 
@@ -146,7 +153,7 @@ function RootStackScreen() {
 
 	return (
 		<AuthController>
-			<StatusBar barStyle={'dark-content'} />
+			<StatusBar barStyle={'light-content'} />
 			<NavigationContainer>
 				<RootStack.Navigator mode="modal">
 					<RootStack.Screen
@@ -190,7 +197,7 @@ const styles = StyleSheet.create({
 	},
 	categoryNameWrapper: {
 		paddingHorizontal: 30,
-		paddingVertical: 10,
+		paddingVertical: 5,
 		borderRadius: 20,
 		borderWidth: 1,
 		borderColor: '#424242',
@@ -231,6 +238,9 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: '#1A237E'
 	},
+	cancelButton: {
+		marginHorizontal: 20
+	}
 });
 
 export default RootStackScreen;

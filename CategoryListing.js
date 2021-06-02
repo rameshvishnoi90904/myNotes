@@ -37,7 +37,9 @@ function CategoryListingScreen({navigation, route}) {
 	}
 
 	const openAddNotes = () => {
-		navigation.navigate("MyModal")
+		navigation.navigate("Note",{
+			category: category
+		});
 	}
 
 	let notesPreview = [];
@@ -55,8 +57,18 @@ function CategoryListingScreen({navigation, route}) {
 					/>
 				</TouchableOpacity>
 			)
-		})
+		});
+
+		if (cData.notes.length == 0) {
+			notesPreview = (
+				<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+					<Text>No Notes added yet!</Text>
+				</View>
+			)
+		}
 	}
+
+	
 	return (
 		<View style={styles.container}>
 			{notesPreview}

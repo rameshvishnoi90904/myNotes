@@ -22,7 +22,6 @@ const initialState = {
 
 
 const updater = (prevState, action) => {
-	console.log("updater called ", prevState, action);
 	var updatedState = { ...prevState};
 	var toReturn;
 	switch (action.type) {
