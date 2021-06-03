@@ -59,7 +59,8 @@ function NoteView({navigation, route}) {
 		// open camera or gallary here and insert image
 		launchImageLibrary({
 			mediaType: 'photo',	
-			includeBase64: true
+			includeBase64: true,
+			quality: 0.4
 		}, (response) => {
 			richText.current?.insertImage(
 			`data:image/jpeg;base64,${response.assets[0].base64}`,
@@ -81,7 +82,6 @@ function NoteView({navigation, route}) {
 						actions={[
 								actions.undo,
 								actions.redo,
-								actions.insertVideo,
 								actions.insertImage,
 								actions.setStrikethrough,
 								actions.checkboxList,
@@ -90,16 +90,6 @@ function NoteView({navigation, route}) {
 								actions.alignLeft,
 								actions.alignCenter,
 								actions.alignRight,
-								actions.code,
-								actions.line,
-
-								actions.foreColor,
-								actions.hiliteColor,
-								actions.heading1,
-								actions.heading4,
-								'insertEmoji',
-								'insertHTML',
-								'fontSize',
 							]}
 					/>
 				<RichEditor

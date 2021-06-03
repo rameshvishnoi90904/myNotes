@@ -94,10 +94,11 @@ const styles = StyleSheet.create({
 	},
 	countText: {
 		fontSize: 32,
-		color: '#1A237E'
+		color: '#1A237E',
+		fontWeight: 'bold'
 	},
 	addText: {
-		fontSize: 52,
+		fontSize: 42,
 		color: 'white'
 	},
 	floatingAdd: {
