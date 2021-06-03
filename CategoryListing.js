@@ -74,7 +74,9 @@ function CategoryListingScreen({navigation, route}) {
 	
 	return (
 		<View style={styles.container}>
-			{notesPreview}
+			<ScrollView>
+				{notesPreview}
+			</ScrollView>
 			<TouchableOpacity style={styles.floatingAdd} onPress={openAddNotes}>
 				<Text style={styles.addText}>+</Text>
 			</TouchableOpacity>
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
 		elevation: 4,
 	},
 	addText: {
-		fontSize: 52,
+		fontSize: 42,
 		color: 'white'
 	},
 	floatingAdd: {
