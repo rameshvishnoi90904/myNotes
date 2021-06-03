@@ -13,23 +13,24 @@ import {
   TouchableOpacity
 } from 'react-native';
 import {AuthContext} from './context/Context';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+GoogleSignin.configure({
+	webClientId: '',
+  });
 
-
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 const {width, height} = Dimensions.get("window");
 
 function LoginScreen({navigation, route}) {
 	const [state, update] = useContext(AuthContext);
-
 	const signinAnon = async () => {
-		update({
-			type: "LOGIN"
-		});
-		return;
 		auth()
 		.signInAnonymously()
 		.then(() => {
 			console.log('User signed in anonymously');
+			update({
+				type: "LOGIN"
+			});
 		}).catch(error => {
 			if (error.code === 'auth/operation-not-allowed') {
 				console.log('Enable anonymous in your firebase console.');
@@ -40,11 +41,6 @@ function LoginScreen({navigation, route}) {
 	}
 
 	const googleSignIn = async () => {
-
-		update({
-			type: "LOGIN"
-		});
-		return;
 		const { idToken } = await GoogleSignin.signIn();
 
 		// Create a Google credential with the token
@@ -52,7 +48,9 @@ function LoginScreen({navigation, route}) {
 
 		// Sign-in the user with the credential
 		await auth().signInWithCredential(googleCredential);
-
+		update({
+			type: "LOGIN"
+		});
 	}
 	return (
 		<SafeAreaView style={styles.container}>

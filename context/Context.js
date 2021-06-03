@@ -34,7 +34,7 @@ const updater = (prevState, action) => {
 		}
 		case 'INITIALIZE' : {
 			const data = action.data;
-			return {...data, loggedIn: false}
+			return {...data}
 		}
 		case 'ADD_NEW_NOTE': {
 			const category = action.data.category;
