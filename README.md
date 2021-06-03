@@ -10,6 +10,8 @@ My Notes app with 4 screens (authentication, category overview, category list, s
 5. My notes supportes images inside notes.
 6. My notes supportes To-Do List
 
+Install app from [here](https://drive.google.com/file/d/1K38G_mHBpOb_c-XdZF06F2WagTaLf1KM/view?usp=sharing)
+
 Screenshots
 
 ![image](https://user-images.githubusercontent.com/13585002/120585625-b1d63c80-c44f-11eb-8b31-e9e55c9c0d1b.png)
